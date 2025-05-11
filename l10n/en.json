@@ -1,0 +1,20 @@
+{
+    "errors": {
+        "weather": {
+            "locationDenied": "Location access denied",
+            "locationDeniedForever": "Location permanently denied. Please enable in settings",
+            "locationTimeout": "Location detection timed out",
+            "cityDetectionFailed": "Failed to detect city",
+            "unknownLocationError": "Unknown location error",
+            "errorData": "Failed to load weather data"
+        },
+         "network": {
+            "connectionTimeout": "Connection timeout. Please check your internet connection",
+            "connectionError": "Failed server connection. Please try againt later",
+            "server": "Server error"
+        },
+        "api": {
+            "titile": "API error:"
+        }
+    }
+}
