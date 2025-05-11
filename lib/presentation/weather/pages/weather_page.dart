@@ -5,6 +5,7 @@ import 'package:weather/core/theme/theme_provider.dart';
 import 'package:weather/presentation/weather/providers/weather_provider.dart';
 import 'package:weather/presentation/weather/widgets/weather_content_widget.dart';
 import 'package:weather/presentation/weather/widgets/weather_error_widget.dart';
+import 'package:weather/presentation/weather/widgets/weather_language_switcher.dart';
 
 class WeatherPage extends StatefulWidget {
   const WeatherPage({super.key});
@@ -55,13 +56,13 @@ class _WeatherPageState extends State<WeatherPage> {
                             : Icons.dark_mode,
                       ),
                     ),
+                    WeatherLanguageSwitcher(),
                   ],
                 ),
         backgroundColor: Colors.transparent,
         body: SafeArea(
           child: RefreshIndicator(
             onRefresh: () async {
-              // Вызываем метод обновления данных
               await context.read<WeatherProvider>().fetchWeather();
             },
             child: _buildBody(weatherProvider),
@@ -101,7 +102,6 @@ class _WeatherPageState extends State<WeatherPage> {
       return WeatherContentWidget(entity: weatherProvider.weather!);
     }
 
-    // Fallback empty state
     return const SizedBox.shrink();
   }
 }
