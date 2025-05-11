@@ -9,15 +9,15 @@ import 'package:weather/data/weather/models/weather.dart';
 
 final class WeatherRemoteDataSource implements WeatherDataSourceInterface {
   final Dio dio;
+  final LocaleProvider localeProvider;
 
-  WeatherRemoteDataSource(this.dio);
+  WeatherRemoteDataSource(this.dio, this.localeProvider);
 
   @override
   Future<Weather> fetchWeather(String cityName) async {
     try {
       final String url = dotenv.get('WEATHER_API_URL');
       final String apiKey = dotenv.get('WEATHER_API_KEY');
-      final Locale locale = LocaleProvider().locale;
 
       final response = await dio
           .get(
@@ -26,7 +26,7 @@ final class WeatherRemoteDataSource implements WeatherDataSourceInterface {
               'q': cityName,
               'appid': apiKey,
               'units': 'metric',
-              'lang': locale.languageCode,
+              'lang': localeProvider.locale.languageCode,
             },
           )
           .timeout(const Duration(seconds: 10));

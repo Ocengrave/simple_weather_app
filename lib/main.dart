@@ -21,10 +21,9 @@ void main() async {
       providers: [
         ...providers,
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
-        ChangeNotifierProvider(create: (_) => LocaleProvider()),
       ],
       child: EasyLocalization(
-        supportedLocales: [Locale('en'), Locale('ru')],
+        supportedLocales: LocaleProvider.supportedLocales,
         path: 'l10n',
         child: Application(),
       ),
